@@ -1,0 +1,95 @@
+<div class="tasks-container">
+  <mat-toolbar>
+    <mat-toolbar-row class="main">
+      <span>Gestor de tareas</span>
+      <button mat-icon-button matTooltip="Cerrar sesión" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="filters">
+      <div class="actions">
+        <mat-icon matTooltip="Filtros">filter_alt</mat-icon>
+        <mat-chip-listbox
+          [value]="filter()"
+          [multiple]="false"
+          (change)="setFilter($event)"
+        >
+          <mat-chip-option value="all" [selectable]="filter() != 'all'">
+            Todos
+          </mat-chip-option>
+          <mat-chip-option value="pending" [selectable]="filter() != 'pending'">
+            Pendientes
+          </mat-chip-option>
+          <mat-chip-option
+            value="completed"
+            [selectable]="filter() != 'completed'"
+          >
+            Completados
+          </mat-chip-option>
+        </mat-chip-listbox>
+      </div>
+
+      <div class="info">
+        <span>
+          <strong>{{ filteredTasks().length }}</strong> Tarea(s)
+        </span>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="tasks-container__content">
+    @for (item of filteredTasks(); track item.id) {
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{ item.title }}</mat-card-title>
+        <mat-card-subtitle>{{ item.description }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-chip-set>
+          <mat-chip disableRipple>{{
+            item.createdAt | date : "dd/MM/yyyy h:mm a"
+          }}</mat-chip>
+          <mat-chip-listbox>
+            <mat-chip-option
+              matTooltip="Cambiar estado"
+              [selected]="item.completed"
+              (selectionChange)="completeTask($event, item)"
+            >
+              {{ item.completed ? "Completado" : "Pendiente" }}
+            </mat-chip-option>
+          </mat-chip-listbox>
+        </mat-chip-set>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-icon-button
+          matTooltip="Editar"
+          (click)="openTaskForm(item.id)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          matTooltip="Eliminar"
+          (click)="deleteTask(item.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    }@empty {
+    <mat-card appearance="outlined" class="no-data">
+      <mat-card-content>
+        <span>No hay tareas</span>
+      </mat-card-content>
+    </mat-card>
+    }
+
+    <button mat-fab id="add-task" (click)="openTaskForm()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div class="tasks-container__footer">&#64;RDevO98</div>
+</div>

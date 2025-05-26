@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Crear usuario</h2>
+<mat-dialog-content>
+  No existe un usuario con este correo electrónico. Desea crearlo?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="aceptar(false)">No</button>
+  <button mat-flat-button cdkFocusInitial (click)="aceptar(true)">Si</button>
+</mat-dialog-actions>

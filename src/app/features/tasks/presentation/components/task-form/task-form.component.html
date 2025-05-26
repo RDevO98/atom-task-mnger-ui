@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Agregar tarea</h2>
+<mat-dialog-content>
+  <div class="task-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Titulo</mat-label>
+      <input
+        matInput
+        placeholder="Escribe algo"
+        [formControl]="titleControl"
+        (blur)="updateErrorMessage('title')"
+      />
+      <mat-icon matPrefix>mail</mat-icon>
+      @if(titleControl.invalid){
+      <mat-error>{{ errorMessages["title"]() }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descripcion</mat-label>
+      <textarea
+        matInput
+        placeholder="Escribe algo"
+        [formControl]="descriptionControl"
+      ></textarea>
+      <mat-icon matPrefix>mail</mat-icon>
+    </mat-form-field>
+
+    <mat-slide-toggle
+      #task
+      labelPosition="after"
+      [formControl]="completedControl"
+    >
+      {{ task.checked ? "Completado" : "Pendiente" }}
+    </mat-slide-toggle>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close(false)">Cerrar</button>
+  <button mat-flat-button (click)="onSubmit()">Crear</button>
+</mat-dialog-actions>
