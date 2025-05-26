@@ -10,7 +10,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 - 🟦 TypeScript
 - 🧱 Clean Architecture (layered separation of responsibilities)
-- 📦 Angular CLI (`firebase init`)
+- 📦 Angular CLI
 - 🎨 Angular Material
 - 🚦 Signals
 
