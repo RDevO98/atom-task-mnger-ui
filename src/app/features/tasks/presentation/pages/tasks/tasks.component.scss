@@ -42,6 +42,10 @@
     overflow-y: auto;
 
     mat-card {
+      mat-card-header {
+        overflow-wrap: anywhere;
+      }
+
       mat-card-content {
         mat-chip-set mat-chip-listbox {
           margin-left: 8px;
