@@ -1,4 +1,4 @@
 export const environment = {
-    production: true,
-    apiUrl: 'http://localhost:5002/task-mnger-api/us-central1/api',
+  production: true,
+  apiUrl: 'https://us-central1-task-mnger-api.cloudfunctions.net/api',
 };
