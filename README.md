@@ -2,7 +2,7 @@
 
 Atom Challenge
 
-> This repository provides a scalable Angular 19 application starter built using **Clean Architecture** principles. It promotes separation of concerns, maintainability, and testability.
+> This repository provides a scalable Angular application starter built using **Clean Architecture** principles. It promotes separation of concerns, maintainability, and testability.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
 
@@ -83,3 +83,5 @@ This will compile your project and store the build artifacts in the `dist/` dire
 ## 📌 Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+---
